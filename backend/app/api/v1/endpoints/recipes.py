@@ -30,6 +30,14 @@ async def list_recipes(
         data = await service.search_recipes(page=page, limit=limit)
         return {"source": "recipedb", "data": data}
 
+from app.services.flavordb import FlavorDBService
+
+@router.get("/test-flavor/{ingredient}")
+async def test_flavor(ingredient: str):
+    """Temporary endpoint to test FlavorDB connection"""
+    service = FlavorDBService()
+    return await service.get_pairings(ingredient)
+
 @router.get("/{recipe_id}")
 async def get_recipe(recipe_id: str, db: AsyncSession = Depends(get_db)):
     """Get single recipe details from Local DB"""

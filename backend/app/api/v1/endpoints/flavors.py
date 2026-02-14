@@ -6,6 +6,24 @@ from app.services.flavordb import FlavorDBService
 
 router = APIRouter()
 
+@router.get("/test")
+async def test_flavordb_connection():
+    """
+    Test endpoint to verify FlavorDB connection is working.
+    Tests with a common ingredient: 'tomato'
+    """
+    service = FlavorDBService()
+    test_ingredient = "tomato"
+    pairings = await service.get_pairings(test_ingredient)
+    
+    return {
+        "status": "testing",
+        "service": "FlavorDB",
+        "test_ingredient": test_ingredient,
+        "pairings": pairings,
+        "connection_status": "success" if pairings else "failed"
+    }
+
 @router.get("/pairings/{ingredient}")
 async def get_flavor_pairings(ingredient: str):
     """

@@ -1,33 +1,65 @@
+﻿/**
+ * ChefMentor X ΓÇô Navigation Configuration
+ *
+ * Structure:
+ *   RootStack
+ *   Γö£ΓöÇΓöÇ Splash (public)
+ *   Γö£ΓöÇΓöÇ Login (public)
+ *   Γö£ΓöÇΓöÇ Onboarding (public)
+ *   ΓööΓöÇΓöÇ MainTabs (authenticated / demo)
+ *       Γö£ΓöÇΓöÇ CookTab (stack)
+ *       Γöé   Γö£ΓöÇΓöÇ RecipeList
+ *       Γöé   Γö£ΓöÇΓöÇ RecipeDetails
+ *       Γöé   Γö£ΓöÇΓöÇ LiveCooking
+ *       Γöé   ΓööΓöÇΓöÇ Completion
+ *       ΓööΓöÇΓöÇ AnalyzeTab (stack)
+ *           Γö£ΓöÇΓöÇ UploadAnalysis
+ *           Γö£ΓöÇΓöÇ AnalysisLoading
+ *           ΓööΓöÇΓöÇ DiagnosisResult
+ */
+
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Text, View, StyleSheet } from 'react-native';
+import { Colors, Typography, TouchTarget } from '../constants/theme';
+import type {
+    RootStackParamList,
+    MainTabParamList,
+    CookStackParamList,
+    AnalyzeStackParamList,
+} from '../types';
 
-// Screens
-import SplashScreen from '../screens/SplashScreen';
-import LoginScreen from '../screens/LoginScreen';
-import CookScreen from '../screens/CookScreen';
-import RecipeDetailScreen from '../screens/RecipeDetailScreen';
-import LiveCookingScreen from '../screens/LiveCookingScreen';
-import AnalyzeScreen from '../screens/AnalyzeScreen';
+import {
+    SplashScreen,
+    LoginScreen,
+    OnboardingScreen,
+    RecipeListScreen,
+    RecipeDetailsScreen,
+    LiveCookingScreen,
+    CompletionScreen,
+    UploadAnalysisScreen,
+    AnalysisLoadingScreen,
+    DiagnosisResultScreen,
+} from '../screens';
 
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+// ΓöÇΓöÇΓöÇ Stack Navigators ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
-<<<<<<< HEAD
-const RootStack = createStackNavigator<RootStackParamList>();
-const CookStack = createStackNavigator<CookStackParamList>();
-const AnalyzeStack = createStackNavigator<AnalyzeStackParamList>();
+const RootStack = createNativeStackNavigator<RootStackParamList>();
+const CookStack = createNativeStackNavigator<CookStackParamList>();
+const AnalyzeStack = createNativeStackNavigator<AnalyzeStackParamList>();
 const MainTab = createBottomTabNavigator<MainTabParamList>();
 
-// ─── Cook Tab Stack ────────────────────────────────
+// ΓöÇΓöÇΓöÇ Cook Tab Stack ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 function CookTabNavigator() {
     return (
         <CookStack.Navigator
             screenOptions={{
                 headerShown: false,
-                cardStyle: { backgroundColor: Colors.neutral[50] },
+                animation: 'fade',
+                contentStyle: { backgroundColor: Colors.neutral[50] },
             }}
         >
             <CookStack.Screen name="RecipeList" component={RecipeListScreen} />
@@ -38,14 +70,15 @@ function CookTabNavigator() {
     );
 }
 
-// ─── Analyze Tab Stack ─────────────────────────────
+// ΓöÇΓöÇΓöÇ Analyze Tab Stack ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 function AnalyzeTabNavigator() {
     return (
         <AnalyzeStack.Navigator
             screenOptions={{
                 headerShown: false,
-                cardStyle: { backgroundColor: Colors.neutral[50] },
+                animation: 'fade',
+                contentStyle: { backgroundColor: Colors.neutral[50] },
             }}
         >
             <AnalyzeStack.Screen name="UploadAnalysis" component={UploadAnalysisScreen} />
@@ -55,7 +88,7 @@ function AnalyzeTabNavigator() {
     );
 }
 
-// ─── Tab Icon Component ────────────────────────────
+// ΓöÇΓöÇΓöÇ Tab Icon Component ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 function TabIcon({ emoji, focused }: { emoji: string; focused: boolean }) {
     return (
@@ -65,7 +98,7 @@ function TabIcon({ emoji, focused }: { emoji: string; focused: boolean }) {
     );
 }
 
-// ─── Main Tab Navigator ────────────────────────────
+// ΓöÇΓöÇΓöÇ Main Tab Navigator ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 function MainTabNavigator() {
     return (
@@ -83,7 +116,7 @@ function MainTabNavigator() {
                 component={CookTabNavigator}
                 options={{
                     tabBarLabel: 'Cook a Dish',
-                    tabBarIcon: ({ focused }) => <TabIcon emoji="🍳" focused={focused} />,
+                    tabBarIcon: ({ focused }) => <TabIcon emoji="≡ƒì│" focused={focused} />,
                 }}
             />
             <MainTab.Screen
@@ -91,14 +124,14 @@ function MainTabNavigator() {
                 component={AnalyzeTabNavigator}
                 options={{
                     tabBarLabel: 'Analyze Dish',
-                    tabBarIcon: ({ focused }) => <TabIcon emoji="🔍" focused={focused} />,
+                    tabBarIcon: ({ focused }) => <TabIcon emoji="≡ƒöì" focused={focused} />,
                 }}
             />
         </MainTab.Navigator>
     );
 }
 
-// ─── Root Navigator ────────────────────────────────
+// ΓöÇΓöÇΓöÇ Root Navigator ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 export function AppNavigator() {
     return (
@@ -106,7 +139,8 @@ export function AppNavigator() {
             <RootStack.Navigator
                 screenOptions={{
                     headerShown: false,
-                    cardStyle: { backgroundColor: Colors.neutral[50] },
+                    animation: 'fade',
+                    contentStyle: { backgroundColor: Colors.neutral[50] },
                 }}
             >
                 <RootStack.Screen name="Splash" component={SplashScreen} />
@@ -118,7 +152,7 @@ export function AppNavigator() {
     );
 }
 
-// ─── Styles ────────────────────────────────────────
+// ΓöÇΓöÇΓöÇ Styles ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
 const styles = StyleSheet.create({
     tabBar: {
@@ -152,27 +186,3 @@ const styles = StyleSheet.create({
         fontSize: 22,
     },
 });
-=======
-function MainTabs() {
-  return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Cook" component={CookScreen} />
-      <Tab.Screen name="Analyze" component={AnalyzeScreen} />
-    </Tab.Navigator>
-  );
-}
-
-export default function AppNavigator() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Splash" component={SplashScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="MainTabs" component={MainTabs} />
-        <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} options={{ headerShown: true, title: 'Recipe' }} />
-        <Stack.Screen name="LiveCooking" component={LiveCookingScreen} options={{ headerShown: true, title: 'Live Mode' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
->>>>>>> 965074bba05a4c69f6ad65a0d06051e580cc66b8

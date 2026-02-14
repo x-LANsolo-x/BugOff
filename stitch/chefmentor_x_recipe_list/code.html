@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefMentor X Recipe List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF6B4A", // Vibrant orange/coral from image
+              "primary-soft": "#FFF0EC", // Soft peach background from image
+              "background-light": "#F9FAFB", // Very light grey for light mode
+              "background-dark": "#111827", // Dark grey for dark mode
+              "card-light": "#FFFFFF",
+              "card-dark": "#1F2937",
+              "text-main-light": "#1F2937",
+              "text-main-dark": "#F3F4F6",
+              "text-sub-light": "#6B7280",
+              "text-sub-dark": "#9CA3AF",
+            },
+            fontFamily: {
+              display: ["Poppins", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "12px",
+              'xl': "16px",
+              '2xl': "20px",
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+              'glow': '0 4px 14px 0 rgba(255, 107, 74, 0.39)',
+            }
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main-light dark:text-text-main-dark transition-colors duration-300 min-h-screen flex justify-center overflow-hidden">
+<div class="w-full max-w-md bg-background-light dark:bg-background-dark h-screen relative flex flex-col overflow-hidden shadow-2xl">
+<div class="pt-12 px-6 flex justify-between items-center z-10">
+<div class="text-sm font-semibold dark:text-white">9:41</div>
+<div class="flex space-x-2 items-center text-text-main-light dark:text-white">
+<span class="material-icons text-sm">signal_cellular_alt</span>
+<span class="material-icons text-sm">wifi</span>
+<span class="material-icons text-sm rotate-90">battery_full</span>
+</div>
+</div>
+<div class="px-6 pt-6 pb-4">
+<h1 class="text-2xl font-bold mb-1">Choose a Recipe</h1>
+<p class="text-text-sub-light dark:text-text-sub-dark text-sm">What would you like to cook today?</p>
+<div class="mt-6 relative">
+<span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 material-icons">search</span>
+<input class="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-card-dark rounded-xl border-none shadow-sm focus:ring-2 focus:ring-primary text-sm dark:text-white placeholder-gray-400 transition-all duration-200" placeholder="Search for a specific food..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-6 pb-24 no-scrollbar space-y-4">
+<div class="flex space-x-3 pb-2 overflow-x-auto no-scrollbar">
+<button class="px-4 py-2 bg-primary text-white text-xs font-semibold rounded-full shadow-glow whitespace-nowrap">All Recipes</button>
+<button class="px-4 py-2 bg-white dark:bg-card-dark text-text-sub-light dark:text-text-sub-dark border border-gray-100 dark:border-gray-700 text-xs font-medium rounded-full whitespace-nowrap">Breakfast</button>
+<button class="px-4 py-2 bg-white dark:bg-card-dark text-text-sub-light dark:text-text-sub-dark border border-gray-100 dark:border-gray-700 text-xs font-medium rounded-full whitespace-nowrap">Main Course</button>
+<button class="px-4 py-2 bg-white dark:bg-card-dark text-text-sub-light dark:text-text-sub-dark border border-gray-100 dark:border-gray-700 text-xs font-medium rounded-full whitespace-nowrap">Dessert</button>
+</div>
+<div class="bg-white dark:bg-card-dark p-4 rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 flex flex-col gap-3 group active:scale-[0.98] transition-transform duration-200">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-orange-100 dark:bg-gray-700 flex items-center justify-center text-3xl shadow-inner">
+                            🍜
+                        </div>
+<div>
+<h3 class="font-bold text-lg leading-tight mb-1">Spicy Ramen Bowl</h3>
+<div class="flex items-center gap-2 text-xs text-text-sub-light dark:text-text-sub-dark">
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-green-500">schedule</span> 25 min</span>
+<span class="w-1 h-1 rounded-full bg-gray-300"></span>
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-orange-400">local_fire_department</span> 340 kcal</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider">Easy</span>
+</div>
+<div class="flex justify-end pt-1">
+<button class="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-glow flex items-center gap-2 transition-all">
+                        START
+                        <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark p-4 rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 flex flex-col gap-3 group active:scale-[0.98] transition-transform duration-200">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-blue-100 dark:bg-gray-700 flex items-center justify-center text-3xl shadow-inner">
+                            🍳
+                        </div>
+<div>
+<h3 class="font-bold text-lg leading-tight mb-1">Morning Omelette</h3>
+<div class="flex items-center gap-2 text-xs text-text-sub-light dark:text-text-sub-dark">
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-green-500">schedule</span> 15 min</span>
+<span class="w-1 h-1 rounded-full bg-gray-300"></span>
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-orange-400">local_fire_department</span> 210 kcal</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider">Easy</span>
+</div>
+<div class="flex justify-end pt-1">
+<button class="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-glow flex items-center gap-2 transition-all">
+                        START
+                        <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark p-4 rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 flex flex-col gap-3 group active:scale-[0.98] transition-transform duration-200">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-yellow-100 dark:bg-gray-700 flex items-center justify-center text-3xl shadow-inner">
+                            🥘
+                        </div>
+<div>
+<h3 class="font-bold text-lg leading-tight mb-1">Paella Valencia</h3>
+<div class="flex items-center gap-2 text-xs text-text-sub-light dark:text-text-sub-dark">
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-green-500">schedule</span> 55 min</span>
+<span class="w-1 h-1 rounded-full bg-gray-300"></span>
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-orange-400">local_fire_department</span> 520 kcal</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-lg bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 text-[10px] font-bold uppercase tracking-wider">Medium</span>
+</div>
+<div class="flex justify-end pt-1">
+<button class="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-glow flex items-center gap-2 transition-all">
+                        START
+                        <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark p-4 rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 flex flex-col gap-3 group active:scale-[0.98] transition-transform duration-200">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-purple-100 dark:bg-gray-700 flex items-center justify-center text-3xl shadow-inner">
+                            🍝
+                        </div>
+<div>
+<h3 class="font-bold text-lg leading-tight mb-1">Creamy Carbonara</h3>
+<div class="flex items-center gap-2 text-xs text-text-sub-light dark:text-text-sub-dark">
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-green-500">schedule</span> 30 min</span>
+<span class="w-1 h-1 rounded-full bg-gray-300"></span>
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-orange-400">local_fire_department</span> 680 kcal</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-lg bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase tracking-wider">Hard</span>
+</div>
+<div class="flex justify-end pt-1">
+<button class="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-glow flex items-center gap-2 transition-all">
+                        START
+                        <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark p-4 rounded-2xl shadow-soft border border-gray-50 dark:border-gray-800 flex flex-col gap-3 group active:scale-[0.98] transition-transform duration-200">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-pink-100 dark:bg-gray-700 flex items-center justify-center text-3xl shadow-inner">
+                            🥪
+                        </div>
+<div>
+<h3 class="font-bold text-lg leading-tight mb-1">Club Sandwich</h3>
+<div class="flex items-center gap-2 text-xs text-text-sub-light dark:text-text-sub-dark">
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-green-500">schedule</span> 10 min</span>
+<span class="w-1 h-1 rounded-full bg-gray-300"></span>
+<span class="flex items-center gap-1"><span class="material-icons text-[14px] text-orange-400">local_fire_department</span> 380 kcal</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-lg bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider">Easy</span>
+</div>
+<div class="flex justify-end pt-1">
+<button class="bg-primary hover:bg-opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-semibold shadow-glow flex items-center gap-2 transition-all">
+                        START
+                        <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-6 left-6 right-6">
+<div class="bg-white dark:bg-card-dark rounded-2xl shadow-2xl p-2 flex justify-between items-center relative">
+<button class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl bg-primary-soft dark:bg-gray-700 text-primary dark:text-primary transition-colors">
+<span class="material-icons">restaurant_menu</span>
+<span class="text-[10px] font-bold mt-1">Cook</span>
+</button>
+<div class="w-px h-8 bg-gray-100 dark:bg-gray-700 mx-2"></div>
+<button class="flex-1 flex flex-col items-center justify-center py-2 rounded-xl text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
+<span class="material-icons-outlined">analytics</span>
+<span class="text-[10px] font-medium mt-1">Analyze Dish</span>
+</button>
+</div>
+</div>
+</div>
+
+</body></html>

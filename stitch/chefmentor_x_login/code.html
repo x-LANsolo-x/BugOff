@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefMentor X Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF6B4A", // Warm orange from screenshot
+                        secondary: "#FFF0EB", // Very light peach background
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#18181b",
+                        "surface-light": "#F9FAFB",
+                        "surface-dark": "#27272a",
+                        "text-main-light": "#1F2937",
+                        "text-main-dark": "#F3F4F6",
+                        "text-sub-light": "#6B7280",
+                        "text-sub-dark": "#9CA3AF",
+                    },
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': "1.5rem",
+                        '2xl': "2rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 4px 20px rgba(255, 107, 74, 0.3)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>.fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4 font-sans antialiased transition-colors duration-300">
+<div class="w-full max-w-[400px] h-[850px] bg-background-light dark:bg-surface-dark rounded-[2.5rem] shadow-2xl overflow-hidden relative border-[8px] border-surface-light dark:border-zinc-800 flex flex-col">
+<div class="px-6 py-4 flex justify-between items-center text-xs font-semibold text-text-main-light dark:text-text-main-dark z-10">
+<span>9:41</span>
+<div class="flex items-center gap-1.5">
+<span class="material-icons text-[16px]">signal_cellular_alt</span>
+<span class="material-icons text-[16px]">wifi</span>
+<span class="material-icons text-[16px]">battery_full</span>
+</div>
+</div>
+<div class="px-6 pt-2 pb-6 z-10">
+<button class="w-10 h-10 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-text-main-light dark:text-text-main-dark hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+<span class="material-icons text-xl">arrow_back</span>
+</button>
+</div>
+<div class="flex-1 px-8 flex flex-col justify-center pb-20 relative">
+<div class="absolute top-0 right-0 w-64 h-64 bg-secondary dark:bg-orange-900/20 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+<div class="flex justify-center mb-10 fade-in-up">
+<div class="w-24 h-24 bg-primary rounded-full shadow-glow flex items-center justify-center transform hover:scale-105 transition-transform duration-300">
+<span class="material-icons text-white text-5xl">restaurant_menu</span>
+</div>
+</div>
+<div class="text-center mb-10 fade-in-up delay-100">
+<h1 class="font-display text-4xl font-bold text-text-main-light dark:text-text-main-dark mb-3 tracking-tight">
+                    Welcome Back
+                </h1>
+<p class="text-text-sub-light dark:text-text-sub-dark text-lg font-medium leading-relaxed">
+                    Sign in to access your <br/>cooking journey
+                </p>
+</div>
+<div class="space-y-4 w-full fade-in-up delay-200">
+<button class="w-full h-14 bg-white dark:bg-zinc-800 border border-gray-200 dark:border-gray-700 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-50 dark:hover:bg-zinc-700 transition-all duration-200 shadow-sm group">
+<img alt="Google Logo" class="w-6 h-6 group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANJcQm6u5UqkWPFea36T5NtQKyqNuT2QUPAYeRLuCdVjOkvMYVLLupPRrVvHo2OJtfFVIi9J7P3og8HBSJnZj3klnVSOJXTu4QOgQ1NjBHyCa5HH3AQRqgWiXDD-cttU-PoBKX0RW2o8rdJPvDAHbK8Jj_fi85oZWbYIjIXxHHe6IBwDXha0bZDuXZdaDmAwp8YYi6AIhuIVZz1bTbDOXTvBLGd4yrv352lf05OOz011wju2VTYSyk_4-i5XWa4lUorhJrZkdH9cU"/>
+<span class="font-semibold text-text-main-light dark:text-text-main-dark text-[17px]">Continue with Google</span>
+</button>
+<button class="w-full h-14 bg-black dark:bg-white text-white dark:text-black rounded-xl flex items-center justify-center gap-3 hover:opacity-90 transition-all duration-200 shadow-lg">
+<span class="material-icons text-xl">apple</span>
+<span class="font-semibold text-[17px]">Continue with Apple</span>
+</button>
+</div>
+<div class="flex items-center gap-4 my-8 fade-in-up delay-300">
+<div class="h-[1px] flex-1 bg-gray-200 dark:bg-gray-700"></div>
+<span class="text-sm font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">or</span>
+<div class="h-[1px] flex-1 bg-gray-200 dark:bg-gray-700"></div>
+</div>
+<div class="text-center fade-in-up delay-300">
+<button class="text-primary font-bold text-lg hover:opacity-80 transition-opacity">
+                    Continue as Guest
+                </button>
+</div>
+</div>
+<div class="p-6 text-center z-10">
+<p class="text-xs text-text-sub-light dark:text-text-sub-dark">
+                By continuing, you agree to our 
+                <a class="text-text-main-light dark:text-text-main-dark font-semibold underline decoration-primary decoration-2 underline-offset-2" href="#">Terms</a>
+                &amp;
+                <a class="text-text-main-light dark:text-text-main-dark font-semibold underline decoration-primary decoration-2 underline-offset-2" href="#">Privacy Policy</a>
+</p>
+<div class="mt-6 w-32 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto"></div>
+</div>
+</div>
+
+</body></html>

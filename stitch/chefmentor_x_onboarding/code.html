@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefMentor X Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF6B4A", // Vibrant orange/coral from reference
+                        "primary-light": "#FFF0ED", // Light peach background for illustrations
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#18181B", // Zinc-900
+                        "surface-light": "#F8F9FA",
+                        "surface-dark": "#27272A", // Zinc-800
+                        "text-main-light": "#1F2937", // Gray-800
+                        "text-main-dark": "#F3F4F6", // Gray-100
+                        "text-sub-light": "#6B7280", // Gray-500
+                        "text-sub-dark": "#9CA3AF", // Gray-400
+                    },
+                    fontFamily: {
+                        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        body: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': "1.5rem",
+                        '2xl': "2rem",
+                        '3xl': "2.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>.glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass-effect {
+            background: rgba(39, 39, 42, 0.7);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-body antialiased text-text-main-light dark:text-text-main-dark transition-colors duration-300">
+<div class="relative mx-auto h-screen w-full max-w-md overflow-hidden bg-background-light dark:bg-background-dark flex flex-col justify-between">
+<div class="px-6 pt-12 pb-2 flex justify-between items-center z-20">
+<span class="text-sm font-semibold tracking-wide">9:41</span>
+<div class="flex items-center space-x-2">
+<span class="material-icons text-sm">signal_cellular_alt</span>
+<span class="material-icons text-sm">wifi</span>
+<span class="material-icons text-sm rotate-90">battery_full</span>
+</div>
+</div>
+<div class="absolute top-12 right-6 z-30">
+<button class="text-primary font-semibold text-sm hover:opacity-80 transition-opacity px-4 py-2 rounded-full hover:bg-primary-light dark:hover:bg-surface-dark">
+                Skip
+            </button>
+</div>
+<main class="flex-1 flex flex-col items-center justify-center px-6 relative z-10 -mt-10">
+<div class="relative w-full aspect-square mb-10 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary-light dark:bg-surface-dark rounded-full scale-90 blur-2xl opacity-60"></div>
+<div class="relative w-full h-full rounded-3xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-800 bg-white dark:bg-surface-dark">
+<img alt="Person cooking in a bright kitchen with vegetables" class="w-full h-full object-cover opacity-90 dark:opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDWHYca_e0CR9K2LxXa3S45F1Ij4ASx_a2KKVMAqWFeVQR4hUcg0Vop08dy3WgLC1gXnXfhtFI7idWcPuJEB1cP3FNTxD1TEbluNrKziBZuRGDuGC8WckkuHW7lFKtZu1EUFciaeSxDenWbWZKpwnB3jpsH7xnOlxHnaXAROUgRvHfcL4Dd9aMVjFl1_kettHEzdoeVnxvFpCrqh-mTeoQz-yUtZNQd0VmylFE-ZHIatXZfp4kRBX4yi3A08Jk1BV5Ybozf1u0AqE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-light/20 to-transparent dark:from-background-dark/20"></div>
+<div class="absolute top-1/4 left-4 bg-white dark:bg-zinc-800 px-4 py-3 rounded-2xl rounded-bl-none shadow-lg transform -rotate-2 animate-bounce transition-transform duration-1000 border border-gray-100 dark:border-gray-700 max-w-[160px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-icons text-primary text-sm">mic</span>
+<span class="text-[10px] uppercase font-bold text-gray-400 dark:text-gray-500 tracking-wider">Voice Command</span>
+</div>
+<p class="text-xs font-semibold text-gray-800 dark:text-gray-200">"Next step, please!"</p>
+</div>
+<div class="absolute bottom-1/4 right-4 bg-primary text-white px-4 py-3 rounded-2xl rounded-br-none shadow-lg transform rotate-2 translate-y-2 border border-orange-400 max-w-[180px]">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-icons text-white text-sm">smart_toy</span>
+<span class="text-[10px] uppercase font-bold text-orange-100 tracking-wider">ChefMentor</span>
+</div>
+<p class="text-xs font-medium text-white">"Okay! Now sauté the onions until golden brown."</p>
+</div>
+</div>
+</div>
+<div class="text-center space-y-4 max-w-xs mx-auto">
+<h1 class="text-3xl font-display font-bold text-text-main-light dark:text-white leading-tight">
+                    Cook <span class="text-primary relative inline-block">
+                        Hands-Free
+<svg class="absolute w-full h-2 bottom-0 left-0 text-primary opacity-30" preserveAspectRatio="none" viewBox="0 0 100 10">
+<path d="M0 5 Q 50 10 100 5" fill="none" stroke="currentColor" stroke-width="3"></path>
+</svg>
+</span>
+</h1>
+<p class="text-text-sub-light dark:text-text-sub-dark text-base leading-relaxed">
+                    Get step-by-step voice guidance while you cook. No need to touch your phone with messy hands.
+                </p>
+</div>
+</main>
+<div class="px-6 pb-10 w-full">
+<div class="flex items-center justify-between">
+<div class="flex space-x-2">
+<div class="w-8 h-2 bg-primary rounded-full"></div>
+<div class="w-2 h-2 bg-gray-300 dark:bg-gray-700 rounded-full transition-colors duration-300"></div>
+<div class="w-2 h-2 bg-gray-300 dark:bg-gray-700 rounded-full transition-colors duration-300"></div>
+</div>
+<button class="bg-primary hover:bg-orange-600 text-white rounded-2xl px-8 py-4 flex items-center gap-2 shadow-lg shadow-primary/30 transform active:scale-95 transition-all duration-200">
+<span class="font-bold text-sm">Next</span>
+<span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="w-full flex justify-center mt-6">
+<div class="w-32 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+</div>
+</div>
+</div>
+<script>
+        // Simple dark mode toggle for viewing pleasure (double click anywhere to toggle)
+        document.addEventListener('dblclick', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+    </script>
+
+</body></html>

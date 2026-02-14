@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefMentor X Live Cooking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Lexend:wght@500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF6B50", // Coral
+                        secondary: "#7C9A84", // Sage Green
+                        "background-light": "#F9FAFB",
+                        "background-dark": "#18181B",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#27272A",
+                        "text-light": "#111827",
+                        "text-dark": "#F3F4F6",
+                    },
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"],
+                        display: ["Lexend", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': '1.5rem',
+                        '2xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style>.camera-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.6) 100%);
+        }.high-contrast-border {
+            border-width: 2px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-sans h-screen w-full flex justify-center overflow-hidden transition-colors duration-300">
+<div class="w-full max-w-md h-full relative flex flex-col bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden">
+<div class="absolute top-0 w-full z-50 px-6 py-3 flex justify-between items-center text-white text-sm font-semibold pointer-events-none">
+<span>9:41</span>
+<div class="flex gap-2 items-center">
+<span class="material-icons-round text-base">signal_cellular_alt</span>
+<span class="material-icons-round text-base">wifi</span>
+<span class="material-icons-round text-base">battery_full</span>
+</div>
+</div>
+<div class="h-[40%] relative w-full bg-gray-900 overflow-hidden">
+<img alt="Top down view of ingredients being prepared in a bowl" class="w-full h-full object-cover opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtjJXqKmkXbD9ZZU-V4iDvJ5C8v3z_NyyQWjq65ygpbKDW-L_Q27_KiM5xhLL0qsLKLTi2EWkOwAJpMoD8TxMECcL6I5AfMPYmeVKtRJ6eLeRWCswfNe6yUBLGmwWj8qgPuOagVpf_NdJuD0fdvihhbl9jpimuooxa4rlcqCaKzJiJOBILIZMJPUaD-f1t4zzUsEgB93LgKrA4egY5qMIkMytjQwbIRruZLPjyBez-qE9Wdd1D_OHBJRuAbXIIiPj9YFz52WfiEe4"/>
+<div class="absolute inset-0 camera-overlay"></div>
+<div class="absolute top-14 left-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+<span class="text-white font-display font-bold text-lg tracking-wide">Step 2 of 5</span>
+</div>
+<div class="absolute top-14 right-6 flex items-center gap-2 bg-red-600/90 px-3 py-1.5 rounded-full">
+<div class="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+<span class="text-white font-bold text-xs uppercase tracking-wider">Live View</span>
+</div>
+</div>
+<div class="h-[60%] flex flex-col p-6 gap-6 -mt-8 relative z-10 rounded-t-3xl bg-background-light dark:bg-background-dark shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+<div class="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full mx-auto mb-2 opacity-50"></div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 shadow-lg border-2 border-gray-200 dark:border-gray-700 flex flex-col justify-between relative flex-grow transition-colors duration-300">
+<div class="flex justify-between items-start gap-4">
+<h1 class="text-3xl font-display font-extrabold text-text-light dark:text-text-dark leading-tight tracking-tight">
+                        Whisk the eggs gently until light and fluffy
+                    </h1>
+</div>
+<div class="mt-4 flex items-center justify-between">
+<button aria-label="Read instruction aloud" class="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-icons-round text-4xl">volume_up</span>
+</button>
+<div class="flex items-center gap-2 text-gray-500 dark:text-gray-400 font-semibold bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg">
+<span class="material-icons-round">timer</span>
+<span>~2 mins</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 mt-auto mb-4">
+<div class="grid grid-cols-2 gap-4 h-24">
+<button class="bg-secondary text-white rounded-2xl flex flex-col items-center justify-center shadow-md active:bg-opacity-90 active:scale-[0.98] transition-all group">
+<span class="text-3xl mb-1 group-hover:scale-110 transition-transform">🎙️</span>
+<span class="font-display font-bold text-lg">Ask AI</span>
+</button>
+<button class="bg-primary text-white rounded-2xl flex flex-col items-center justify-center shadow-lg shadow-primary/30 active:bg-opacity-90 active:scale-[0.98] transition-all group">
+<span class="text-3xl mb-1 group-hover:translate-x-1 transition-transform">⏭️</span>
+<span class="font-display font-bold text-lg">Next Step</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 h-16">
+<button class="border-2 border-gray-300 dark:border-gray-600 text-text-light dark:text-text-dark rounded-xl flex items-center justify-center gap-2 font-display font-bold text-base hover:bg-gray-50 dark:hover:bg-gray-800 active:scale-[0.98] transition-all">
+<span class="material-icons-round">replay</span>
+                        Repeat
+                    </button>
+<button class="border-2 border-gray-300 dark:border-gray-600 text-text-light dark:text-text-dark rounded-xl flex items-center justify-center gap-2 font-display font-bold text-base hover:bg-gray-50 dark:hover:bg-gray-800 active:scale-[0.98] transition-all">
+<span class="material-icons-round">pause</span>
+                        Pause
+                    </button>
+</div>
+</div>
+<div class="w-full flex justify-center pb-1">
+<div class="w-32 h-1.5 bg-black/20 dark:bg-white/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<script>
+        // Simple dark mode toggle for viewing pleasure (optional, not strictly requested but good practice)
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+</body></html>

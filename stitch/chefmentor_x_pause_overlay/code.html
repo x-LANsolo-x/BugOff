@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefMentor X Pause Overlay</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF6B4A", // Coral color extracted from the screenshot vibes
+                        "primary-dark": "#E65536",
+                        "background-light": "#F7F5F2",
+                        "background-dark": "#18181b",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#27272a",
+                        "overlay-light": "rgba(255, 255, 255, 0.6)",
+                        "overlay-dark": "rgba(0, 0, 0, 0.7)",
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': "1.5rem",
+                        '2xl': "2rem",
+                        '3xl': "2.5rem",
+                    },
+                    backdropBlur: {
+                        'xs': '2px',
+                    }
+                },
+            },
+        };
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4 antialiased overflow-hidden relative">
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none filter blur-md brightness-90 dark:brightness-50 transition-all duration-300">
+<div class="flex justify-between items-center px-6 pt-12 pb-4">
+<span class="material-icons-round text-gray-800 dark:text-gray-200">arrow_back</span>
+<h3 class="font-bold text-lg text-gray-800 dark:text-gray-200">Spicy Garlic Shrimp</h3>
+<span class="material-icons-round text-gray-800 dark:text-gray-200">more_horiz</span>
+</div>
+<div class="px-6 space-y-6 opacity-60">
+<div class="aspect-video w-full bg-gray-300 dark:bg-gray-700 rounded-2xl overflow-hidden shadow-sm">
+<img alt="Cooking process" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoscE9T-NOLoDj5WPv8S9PDMCt9XPkKH-ilYxLNr7POEZ0WBH7V3Atc42Z4mCzhjJ-wKlFeHEPVK7oQfd2PuXYPIxRK85ieqM2HzWcaNcBRSOWffDcYiUbPftR7NSjuLWAAUeI5GQtZqTE8gtG8OgF4YU99oAdG_iK8iflCcOxkJP4XCJmkNNRKcrDxUYgTB8vZBFgtlB5zjN1KCaVKriwRex17hY7f-cW-EtmmK74P2dtcprFAjdG2_uyIM2APHbOFpwrBEsHX94"/>
+</div>
+<div class="space-y-4">
+<div class="flex items-center space-x-3">
+<span class="bg-primary/20 text-primary w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</span>
+<h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Seasoning the mix</h2>
+</div>
+<p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Add the paprika, cumin, and garlic powder to the shrimp. Toss until evenly coated. Make sure the pan is preheated to medium-high.
+                </p>
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<span class="material-icons-round text-orange-400">timer</span>
+<span class="font-medium text-gray-700 dark:text-gray-300">Timer</span>
+</div>
+<span class="font-bold text-gray-900 dark:text-white">05:00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-black/20 dark:bg-black/60 backdrop-blur-sm z-10"></div>
+<main class="relative z-20 w-full max-w-sm mx-auto animate-fade-in-up">
+<div class="bg-surface-light dark:bg-surface-dark rounded-3xl shadow-2xl p-8 border border-white/50 dark:border-gray-700 backdrop-blur-md">
+<div class="flex justify-center mb-6">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center ring-4 ring-primary/5 dark:ring-primary/20">
+<span class="material-icons-round text-primary text-5xl">pause</span>
+</div>
+</div>
+<div class="text-center space-y-2 mb-8">
+<h1 class="text-2xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                    Cooking Paused
+                </h1>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    Step 3: Seasoning
+                </p>
+</div>
+<div class="flex justify-center mb-10">
+<div class="relative">
+<div class="text-6xl font-black text-gray-800 dark:text-gray-100 font-display tracking-tighter">
+                        04:15
+                    </div>
+<div class="absolute -right-6 top-0 text-primary animate-pulse">
+<span class="material-icons-round text-sm">circle</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-dark active:scale-95 transition-all duration-200 text-white font-bold text-lg py-5 rounded-2xl shadow-lg shadow-primary/30 flex items-center justify-center space-x-3 mb-4 group">
+<span class="material-icons-round group-hover:translate-x-0.5 transition-transform">play_arrow</span>
+<span>Resume Cooking</span>
+</button>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center space-x-2 py-4 rounded-2xl border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-gray-50 dark:hover:bg-gray-800 active:bg-gray-100 dark:active:bg-gray-700 transition-colors">
+<span class="material-icons-round text-xl">replay</span>
+<span>Restart</span>
+</button>
+<button class="flex items-center justify-center space-x-2 py-4 rounded-2xl border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold hover:bg-red-50 dark:hover:bg-red-900/20 active:bg-red-100 dark:active:bg-red-900/30 transition-colors group">
+<span class="material-icons-round text-xl group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">close</span>
+<span class="group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">End</span>
+</button>
+</div>
+</div>
+<div class="mt-8 text-center opacity-80">
+<p class="text-xs text-white dark:text-gray-400 flex items-center justify-center gap-2">
+<span class="material-icons-round text-sm">touch_app</span>
+<span>Large buttons optimized for messy hands</span>
+</p>
+</div>
+</main>
+<div class="fixed bottom-2 left-0 right-0 flex justify-center z-50 pointer-events-none">
+<div class="w-32 h-1.5 bg-gray-900/20 dark:bg-white/20 rounded-full backdrop-blur-md"></div>
+</div>
+
+</body></html>

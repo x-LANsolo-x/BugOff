@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefMentor X Profile Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF6B4A", 
+              "primary-dark": "#E85A3A",
+              "primary-light": "#FFEEEA",
+              "secondary": "#FFEFEB", 
+              "background-light": "#F8F9FA",
+              "background-dark": "#18181B",
+              "surface-light": "#FFFFFF",
+              "surface-dark": "#27272A",
+              "text-primary-light": "#1F2937",
+              "text-primary-dark": "#F3F4F6",
+              "text-secondary-light": "#6B7280",
+              "text-secondary-dark": "#9CA3AF",
+            },
+            fontFamily: {
+              display: ['"Plus Jakarta Sans"', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              'xl': "1.5rem",
+              '2xl': "2rem",
+            },
+            boxShadow: {
+                'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                'glow': '0 0 15px rgba(255, 107, 74, 0.3)',
+            }
+          },
+        },
+      };
+    </script>
+<style>
+        body {
+            min-height: 100vh;
+        }::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-sans antialiased bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark min-h-screen flex flex-col relative transition-colors duration-300">
+<header class="relative px-6 pt-12 pb-8 bg-surface-light dark:bg-surface-dark rounded-b-[2.5rem] shadow-soft z-20">
+<div class="flex flex-col items-center justify-center space-y-4">
+<div class="relative">
+<div class="w-28 h-28 rounded-full p-1 bg-gradient-to-br from-primary to-orange-300">
+<img alt="Profile" class="w-full h-full object-cover rounded-full border-4 border-surface-light dark:border-surface-dark" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmG17wD2hacggr_6Fx0EWUvAy5HTLazCqPXPvMz9LpWmR1VwRwgOSwo01PnFDujwQGTTO2QHhdKMMRWHHNJoT3MXJY_5-Sy1nKs3lQ1Qo7mHJ5uN1I5rhlaVGRQ3RIJYm8-g1NkzG4C3PYigYoHNbMHWx8Ua-WLFw1Ve9BmMkYEoq4hft-Jl4aiUdZhAsTDiFoyhZ8A7YoeanxGBzrcpbrOBRAwWjUAT7I_KWFRM-cfFhPOlEVKXqsu37we0_JS6X_G3peF_2t4sI"/>
+</div>
+<div class="absolute bottom-1 right-1 bg-green-500 w-6 h-6 rounded-full border-4 border-surface-light dark:border-surface-dark"></div>
+</div>
+<div class="text-center">
+<h1 class="text-2xl font-bold text-gray-900 dark:text-white">Alex Johnson</h1>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark font-medium">alex.cooking@example.com</p>
+<span class="inline-flex items-center gap-1 mt-2 px-3 py-1 bg-primary-light dark:bg-primary/20 text-primary rounded-full text-xs font-bold">
+<span class="material-symbols-outlined text-sm">workspace_premium</span>
+                    Pro Chef
+                </span>
+</div>
+</div>
+</header>
+<main class="flex-1 px-6 pt-6 pb-24 overflow-y-auto space-y-8 max-w-md mx-auto w-full">
+<section class="grid grid-cols-3 gap-3">
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center space-y-1">
+<span class="text-2xl font-extrabold text-primary">42</span>
+<span class="text-[10px] uppercase tracking-wider font-semibold text-text-secondary-light dark:text-text-secondary-dark leading-tight">Recipes Attempted</span>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center space-y-1">
+<span class="text-2xl font-extrabold text-green-500">30</span>
+<span class="text-[10px] uppercase tracking-wider font-semibold text-text-secondary-light dark:text-text-secondary-dark leading-tight">Recipes Mastered</span>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center space-y-1">
+<span class="text-2xl font-extrabold text-blue-500">72<span class="text-sm align-top">%</span></span>
+<span class="text-[10px] uppercase tracking-wider font-semibold text-text-secondary-light dark:text-text-secondary-dark leading-tight">Success Rate</span>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-gray-900 dark:text-white">Cooking Profile</h2>
+<button class="text-primary text-sm font-semibold hover:text-primary-dark">Edit</button>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-gray-800 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600 dark:text-orange-400">
+<span class="material-symbols-outlined">network_intelligence</span>
+</div>
+<div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark font-medium">Preferred Difficulty</p>
+<p class="text-sm font-bold text-gray-800 dark:text-gray-200">Medium</p>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-gray-100 dark:bg-gray-800"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark font-medium">Dietary Preference</p>
+<p class="text-sm font-bold text-gray-800 dark:text-gray-200">Vegetarian</p>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-gray-100 dark:bg-gray-800"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<div>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark font-medium">Avg. Cooking Time</p>
+<p class="text-sm font-bold text-gray-800 dark:text-gray-200">45 Mins</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">history</span>
+</div>
+<span class="font-semibold text-gray-800 dark:text-gray-200">Cooking History</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">share</span>
+</div>
+<span class="font-semibold text-gray-800 dark:text-gray-200">Share Progress</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<span class="font-semibold text-gray-800 dark:text-gray-200">Settings</span>
+</div>
+<span class="material-symbols-outlined text-gray-400">chevron_right</span>
+</button>
+</div>
+</section>
+<div class="pt-4">
+<button class="w-full py-4 text-red-500 font-bold bg-red-50 dark:bg-red-900/20 rounded-xl hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">logout</span>
+                Sign Out
+            </button>
+<p class="text-center text-xs text-text-secondary-light dark:text-text-secondary-dark mt-6">ChefMentor X v2.4.0</p>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 bg-surface-light dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 px-6 py-3 flex justify-between items-center z-30 pb-safe">
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<div class="relative -top-5">
+<button class="w-14 h-14 bg-primary rounded-full shadow-glow flex items-center justify-center text-white hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">mic</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined">person</span>
+</button>
+</nav>
+<div class="fixed bottom-0 left-0 right-0 h-[20px] bg-transparent pointer-events-none z-40"></div> 
+<script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+</body></html>

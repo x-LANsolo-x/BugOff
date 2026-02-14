@@ -203,7 +203,9 @@ Tool call argument 'replace' pruned from message history.
             </ScrollView>
         </SafeAreaView>
     );
-}
+});
+
+export default SettingsScreen;
 
 /* ─── Styles ─────────────────────────────────────────── */
 const styles = StyleSheet.create({

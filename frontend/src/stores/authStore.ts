@@ -2,7 +2,7 @@
  * ChefMentor X – Auth Store (Zustand)
  */
 
-import { create } from 'zustand';
+import create from 'zustand';
 import type { User, AuthState } from '../types';
 
 interface AuthActions {

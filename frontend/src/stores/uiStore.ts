@@ -2,7 +2,7 @@
  * ChefMentor X – UI Store (Zustand)
  */
 
-import { create } from 'zustand';
+import create from 'zustand';
 import type { AlertType } from '../types';
 
 interface ToastData {

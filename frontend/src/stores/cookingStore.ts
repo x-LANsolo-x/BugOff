@@ -2,7 +2,7 @@
  * ChefMentor X – Cooking Session Store (Zustand)
  */
 
-import { create } from 'zustand';
+import create from 'zustand';
 
 interface CookingState {
     sessionId: string | null;

@@ -2,7 +2,7 @@
  * ChefMentor X – Recipe Store (Zustand)
  */
 
-import { create } from 'zustand';
+import create from 'zustand';
 import type { Recipe } from '../types';
 
 interface RecipeState {

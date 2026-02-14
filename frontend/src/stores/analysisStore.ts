@@ -2,7 +2,7 @@
  * ChefMentor X – Analysis Store (Zustand)
  */
 
-import { create } from 'zustand';
+import create from 'zustand';
 import type { AnalysisRequest, AnalysisResult } from '../types';
 
 interface AnalysisState {

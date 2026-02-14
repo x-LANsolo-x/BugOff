@@ -10,7 +10,6 @@ from unittest.mock import AsyncMock, patch
 async def fast_recipe(db_session):
     from app.models.recipe import DifficultyLevel
     recipe = Recipe(
-        id=uuid.uuid4(), 
         title="Fast Food",
         name="Fast Food", 
         difficulty=DifficultyLevel.BEGINNER,
@@ -22,9 +21,9 @@ async def fast_recipe(db_session):
     await db_session.flush()
     
     # 3 Steps to test flow: 1 -> 2 -> 3
-    s1 = RecipeStep(id=uuid.uuid4(), recipe_id=recipe.id, step_number=1, instruction="Step 1")
-    s2 = RecipeStep(id=uuid.uuid4(), recipe_id=recipe.id, step_number=2, instruction="Step 2")
-    s3 = RecipeStep(id=uuid.uuid4(), recipe_id=recipe.id, step_number=3, instruction="Step 3")
+    s1 = RecipeStep(recipe_id=recipe.id, step_number=1, instruction="Step 1")
+    s2 = RecipeStep(recipe_id=recipe.id, step_number=2, instruction="Step 2")
+    s3 = RecipeStep(recipe_id=recipe.id, step_number=3, instruction="Step 3")
     db_session.add_all([s1, s2, s3])
     await db_session.commit()
     return recipe

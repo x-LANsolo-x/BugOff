@@ -1,10 +1,14 @@
 from fastapi import APIRouter, UploadFile, File, Response, Body
 from app.services.voice import VoiceService
+from app.services.ai_mentor import AIMentorService
 from pydantic import BaseModel
 
 router = APIRouter()
 
 class TTSRequest(BaseModel):
+    text: str
+
+class VoiceCommandRequest(BaseModel):
     text: str
 
 @router.post("/stt")
@@ -16,6 +20,16 @@ async def speech_to_text(file: UploadFile = File(...)):
     content = await file.read()
     text = await service.speech_to_text(content, file.filename)
     return {"text": text}
+
+@router.post("/command")
+async def process_voice_command(request: VoiceCommandRequest):
+    """
+    Text -> Intent (NLU)
+    User sends "Set timer for 5 mins", gets {"intent": "TIMER", "duration": 300}
+    """
+    service = AIMentorService()
+    intent = await service.parse_voice_intent(request.text)
+    return intent
 
 @router.post("/tts")
 async def text_to_speech(request: TTSRequest):

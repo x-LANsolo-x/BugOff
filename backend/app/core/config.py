@@ -63,7 +63,13 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     
     # CORS Origins (comma-separated in .env)
+    # Development: Use "*" or specific local IPs
+    # Production: Comma-separated list like "https://app.example.com,https://www.example.com"
     CORS_ORIGINS: str = "*"
+    
+    # Allowed hosts for CORS pattern matching (development only)
+    # These patterns are used when ENVIRONMENT=development
+    ALLOWED_HOSTS: str = "localhost,127.0.0.1,192.168.*.*,10.0.*.*,172.16.*.*"
     
     # Rate Limiting
     RATE_LIMIT_PER_MINUTE: int = 60

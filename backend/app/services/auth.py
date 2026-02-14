@@ -1,3 +1,4 @@
+from datetime import timedelta
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -23,14 +24,15 @@ class AuthService:
                     requests.Request(), 
                     settings.GOOGLE_CLIENT_ID
                 )
-            except ValueError as e:
+            except (ValueError, Exception) as e:
                 # Fallback for development if using Expo Go proxy issues, 
                 # but STRICTLY handle this in prod. 
                 # For now, we assume valid if verify fails ONLY IF DEBUG is True
-                if settings.DEBUG and "Invalid token" in str(e):
+                if settings.DEBUG:
                      # MOCK DATA FOR DEV ONLY IF VERIFICATION FAILS
                      # DELETE THIS BLOCK IN PRODUCTION
                      print("⚠️ DEV MODE: Google Token Verification Failed. Using Mock Data.")
+                     print(f"   Error: {str(e)}")
                      idinfo = {
                          "email": "testuser@gmail.com",
                          "name": "Test User",
@@ -55,9 +57,14 @@ class AuthService:
             
             # 4. Generate JWT
             access_token = create_access_token(data={"sub": str(user.id), "email": user.email})
+            refresh_token = create_access_token(
+                data={"sub": str(user.id), "email": user.email, "type": "refresh"},
+                expires_delta=timedelta(days=7)
+            )
             
             return {
                 "access_token": access_token,
+                "refresh_token": refresh_token,
                 "token_type": "bearer",
                 "user_id": str(user.id),
                 "email": user.email,

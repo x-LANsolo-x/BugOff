@@ -2,6 +2,7 @@ from app.models.user import User
 from app.models.recipe import Recipe, RecipeStep
 from app.models.session import DemoSession, CookingSession, FailureAnalysis
 from app.models.profile import UserProfile
+from app.models.audit_log import AuditLog
 
 __all__ = [
     "User",
@@ -10,5 +11,6 @@ __all__ = [
     "DemoSession",
     "CookingSession",
     "FailureAnalysis",
-    "UserProfile"
+    "UserProfile",
+    "AuditLog"
 ]

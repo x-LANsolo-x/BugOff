@@ -11,25 +11,27 @@ class FailureService:
         self.storage = StorageService()
         self.vision = AIVisionService()
     
-    async def analyze_upload(self, file: UploadFile, user_id: int = None, cooking_session_id: int = None):
+    async def analyze_upload(self, file: UploadFile, user_id=None, cooking_session_id=None, context: dict = None):
         # 1. Read file
         content = await file.read()
         
         # 2. Upload to Cloudinary
         image_url = await self.storage.upload_image(content)
         
-        # 3. Analyze with AI
-        analysis_result = await self.vision.analyze_dish_failure(image_url)
+        # 3. Analyze with AI (pass context for better diagnosis)
+        analysis_result = await self.vision.analyze_dish_failure(image_url, context=context)
         
-        # 4. Extract fields (analysis_result is now a dict)
+        # 4. Extract fields
         root_cause = analysis_result.get("root_cause", "Unknown")
         explanation = analysis_result.get("explanation", "")
         tips = analysis_result.get("tips", [])
+        severity = analysis_result.get("severity", "moderate")
+        confidence = analysis_result.get("confidence", 0.5)
+        ai_provider = analysis_result.get("ai_provider", "unknown")
         
         # 5. Save Record
         record = FailureAnalysis(
             user_id=user_id,
-            cooking_session_id=cooking_session_id,
             media_url=image_url,
             root_cause=root_cause,
             explanation=f"{explanation}\n\nTips: {', '.join(tips)}" if tips else explanation
@@ -40,10 +42,14 @@ class FailureService:
         
         # Return enriched response
         return {
-            "id": record.id,
+            "id": str(record.id),
             "media_url": record.media_url,
             "root_cause": record.root_cause,
             "explanation": explanation,
             "tips": tips,
-            "created_at": record.created_at
+            "severity": severity,
+            "confidence": confidence,
+            "ai_provider": ai_provider,
+            "created_at": str(record.created_at)
         }
+

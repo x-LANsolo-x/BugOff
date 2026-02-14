@@ -1,13 +1,19 @@
 /**
  * ChefMentor X – App Entry Point
  * Wrapped with ErrorBoundary for debugging
+ * 
+ * Features:
+ * - Session restoration on app launch
+ * - Error boundary for crash handling
+ * - Safe area support
  */
 
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppNavigator } from './src/navigation';
+import { useAuthStore } from './src/stores/authStore';
 
 // Error boundary class component
 class ErrorBoundary extends React.Component<
@@ -59,12 +65,52 @@ const errStyles = StyleSheet.create({
   stack: { fontSize: 12, color: '#aaa', fontFamily: 'monospace' },
 });
 
+/**
+ * Main App Component with Session Restoration
+ */
+function AppContent() {
+  const { restoreSession, isLoading } = useAuthStore();
+
+  useEffect(() => {
+    // Restore saved session on app launch
+    console.log('🚀 App starting - checking for saved session...');
+    restoreSession();
+  }, []);
+
+  // Show splash screen while checking for saved session
+  if (isLoading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#FF6B6B" />
+        <Text style={styles.loadingText}>ChefMentor X</Text>
+      </View>
+    );
+  }
+
+  return <AppNavigator />;
+}
+
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#1a1a2e',
+  },
+  loadingText: {
+    marginTop: 16,
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FF6B6B',
+  },
+});
+
 export default function App() {
   return (
     <ErrorBoundary>
       <SafeAreaProvider>
         <StatusBar style="dark" />
-        <AppNavigator />
+        <AppContent />
       </SafeAreaProvider>
     </ErrorBoundary>
   );

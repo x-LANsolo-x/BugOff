@@ -16,7 +16,6 @@ from sqlalchemy import select
 async def seeded_recipe(db_session):
     """Create a recipe with steps for testing"""
     recipe = Recipe(
-        id=uuid.uuid4(),
         title="Test Recipe",
         name="Test Recipe",
         difficulty=DifficultyLevel.BEGINNER,
@@ -28,8 +27,8 @@ async def seeded_recipe(db_session):
     db_session.add(recipe)
     await db_session.flush()
     
-    step1 = RecipeStep(id=uuid.uuid4(), recipe_id=recipe.id, step_number=1, instruction="Boil water", expected_state="Boiling")
-    step2 = RecipeStep(id=uuid.uuid4(), recipe_id=recipe.id, step_number=2, instruction="Add noodles", expected_state="Soft")
+    step1 = RecipeStep(recipe_id=recipe.id, step_number=1, instruction="Boil water", expected_state="Boiling")
+    step2 = RecipeStep(recipe_id=recipe.id, step_number=2, instruction="Add noodles", expected_state="Soft")
     db_session.add_all([step1, step2])
     await db_session.commit()
     await db_session.refresh(recipe)
@@ -107,7 +106,6 @@ async def test_cooking_service_handles_completion(db_session, seeded_recipe, tes
     
     # Create session at last step
     session = CookingSession(
-        id=uuid.uuid4(),
         recipe_id=seeded_recipe.id,
         user_id=test_user.id,
         status="in_progress",

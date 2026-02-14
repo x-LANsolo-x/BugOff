@@ -1,0 +1,76 @@
+{
+  "expo": {
+    "name": "ChefMentor X",
+    "slug": "chefmentor-x",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FF6B4A"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.chefmentorx.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "ChefMentor X needs camera access to analyze your dishes",
+        "NSPhotoLibraryUsageDescription": "ChefMentor X needs photo access to analyze your dishes",
+        "NSMicrophoneUsageDescription": "ChefMentor X uses your microphone for voice commands while cooking"
+      }
+    },
+    "android": {
+      "package": "com.chefmentorx.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FF6B4A"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "RECORD_AUDIO"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "scheme": "chefmentorx",
+    "plugins": [
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FF6B4A",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200
+        }
+      ]
+    ],
+    "extra": {
+      "googleClientId": "328517808223-qhdpsu2f036qcmoqo2ps5a84tmj009ro.apps.googleusercontent.com",
+      "eas": {
+        "projectId": "chefmentor-x"
+      }
+    },
+    "owner": "chefmentorx",
+    "updates": {
+      "url": "https://u.expo.dev/chefmentor-x"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
+  }
+}

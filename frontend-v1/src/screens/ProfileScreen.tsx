@@ -468,8 +468,8 @@ const styles = StyleSheet.create({
         borderTopRightRadius: BorderRadius['2xl'],
         paddingHorizontal: Spacing[6],
         paddingTop: Spacing[6],
-        paddingBottom: Spacing[8],
-        maxHeight: '80%',
+        paddingBottom: Spacing[10],
+        maxHeight: '85%',
     },
     modalHeader: {
         flexDirection: 'row',

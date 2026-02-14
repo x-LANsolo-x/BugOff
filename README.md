@@ -36,89 +36,70 @@ BugOff is a voice-first, AI-assisted cooking companion that helps home cooks fol
 - Railway (recommended)
 - Upstash (recommended)
 
-## Installation
+## 🚀 Quick Start
 
-### Prerequisites
+### First Time Setup (5 minutes)
 
-- Python 3.10+
-- Node.js 18+
-- PostgreSQL 14+
-- Redis 6+
+**New to the project?** Follow our automated setup guide:
 
-### Clone the Repository
+👉 **[FIRST_TIME_SETUP.md](FIRST_TIME_SETUP.md)** - Complete step-by-step setup from git clone to running app
+
+**Quick Install:**
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/x-LANsolo-x/BugOff.git
 cd BugOff
-```
 
-### Backend Setup
-
-```bash
+# 2. Backend Setup
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
+cp .env.example .env
+# Edit .env with your credentials (minimum: DATABASE_URL, GEMINI_API_KEY, GROQ_API_KEY)
+python setup_database.py  # Automated database setup!
 
-### Frontend Setup
-
-```bash
-cd ../frontend
-npm install
-```
-
-### Environment Configuration
-
-```bash
-cp backend/.env.example backend/.env
-```
-
-Update `backend/.env` with the required keys and values:
-
-- Database URL
-- Redis URL
-- Cloudinary credentials
-- Google Gemini API key
-- Groq Whisper API key
-- Google TTS credentials
-
-### Database Setup
-
-1. Ensure PostgreSQL is running.
-2. Create a database (for example, `bugoff`).
-3. Update the `DATABASE_URL` in `backend/.env`.
-4. Apply migrations:
-
-```bash
-cd backend
-alembic upgrade head
-```
-
-### Run the Application
-
-```bash
-# Terminal 1 - Backend
-cd backend
-source venv/bin/activate
+# 3. Start Backend
 uvicorn app.main:app --reload
-```
 
-```bash
-# Terminal 2 - Frontend
-cd frontend
+# 4. Frontend Setup (in new terminal)
+cd frontend-v1
+npm install
 npm start
 ```
 
-### Tests
+### Returning Users - One Command Startup
 
 ```bash
-# Backend tests
+# Mac/Linux
+./START_PROJECT.sh
+
+# Windows PowerShell
+.\START_PROJECT.ps1
+```
+
+Or manually:
+```bash
+# Terminal 1: Backend
+cd backend && source venv/bin/activate && uvicorn app.main:app --reload
+
+# Terminal 2: Frontend
+cd frontend-v1 && npm start
+```
+
+## ✅ Testing
+
+```bash
+# Backend tests with coverage
 cd backend
-pytest
+python run_tests.py
+
+# Or use pytest directly
+pytest tests/ -v --cov=app
 
 # Frontend tests
-cd frontend
+cd frontend-v1
 npm test
 ```
 
@@ -171,34 +152,20 @@ Additional documentation is available in the `docs` and `md` directories:
 - `md/chef_mentor_x_final_prd_v_2_two_tab_experience.md` - Product requirements
 - `md/chef_mentor_x_application_flow_app_flow.md` - Application flow
 
-## Troubleshooting
+## 🔧 Troubleshooting
 
-**Dependencies fail to install**
+Having issues? Check our comprehensive troubleshooting guide:
 
-```bash
-# Backend
-pip install --upgrade pip
-pip install -r requirements.txt --no-cache-dir
+👉 **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Solutions to common setup and runtime issues
 
-# Frontend
-rm -rf node_modules package-lock.json
-npm install --legacy-peer-deps
-```
+**Quick Fixes:**
 
-**Database connection issues**
+- **Database issues:** Run `python setup_database.py` in backend directory
+- **Port in use:** Kill the process or use different port
+- **Module not found:** Activate virtual environment and reinstall dependencies
+- **Frontend can't connect:** Update `frontend-v1/src/config/env.ts` with your computer's IP
 
-- Confirm PostgreSQL is running.
-- Verify the `DATABASE_URL` in `backend/.env`.
-- Check that port 5432 is available.
-
-**Expo fails to start**
-
-```bash
-cd frontend
-npx expo start -c
-```
-
-For more details, see `SETUP.md`.
+For detailed solutions, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md) or [SETUP.md](SETUP.md).
 
 ## Contributing
 

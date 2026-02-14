@@ -455,4 +455,76 @@ const styles = StyleSheet.create({
         color: Colors.neutral[400],
         textAlign: 'center',
     },
+
+    /* ── Modal Styles ── */
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        justifyContent: 'flex-end',
+    },
+    modalContent: {
+        backgroundColor: Colors.white,
+        borderTopLeftRadius: BorderRadius['2xl'],
+        borderTopRightRadius: BorderRadius['2xl'],
+        paddingHorizontal: Spacing[6],
+        paddingTop: Spacing[6],
+        paddingBottom: Spacing[8],
+        maxHeight: '80%',
+    },
+    modalHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: Spacing[6],
+    },
+    modalTitle: {
+        fontFamily: 'DMSans-Bold',
+        fontSize: Typography.fontSize['2xl'],
+        fontWeight: '700',
+        color: Colors.textMain,
+    },
+    modalClose: {
+        fontSize: 24,
+        color: Colors.neutral[500],
+        fontWeight: '300',
+    },
+    inputGroup: {
+        marginBottom: Spacing[5],
+    },
+    inputLabel: {
+        fontFamily: 'DMSans-SemiBold',
+        fontSize: Typography.fontSize.sm,
+        fontWeight: '600',
+        color: Colors.textMain,
+        marginBottom: Spacing[2],
+    },
+    optionsRow: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 8,
+    },
+    optionPill: {
+        paddingHorizontal: Spacing[4],
+        paddingVertical: Spacing[2],
+        borderRadius: BorderRadius.full,
+        backgroundColor: Colors.neutral[100],
+        borderWidth: 1,
+        borderColor: Colors.neutral[200],
+    },
+    optionPillActive: {
+        backgroundColor: Colors.brand.orange,
+        borderColor: Colors.brand.orange,
+    },
+    optionText: {
+        fontFamily: 'DMSans-SemiBold',
+        fontSize: Typography.fontSize.sm,
+        fontWeight: '600',
+        color: Colors.neutral[600],
+    },
+    optionTextActive: {
+        color: Colors.white,
+    },
+    saveButton: {
+        marginTop: Spacing[6],
+    },
 });

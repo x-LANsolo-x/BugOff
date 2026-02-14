@@ -5,8 +5,8 @@
 
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, TouchableOpacity } from 'react-native';
-import { Colors, Typography, BorderRadius, Spacing, Shadows } from '../../constants/theme';
-import type { AlertType } from '../../types';
+import { Colors, Typography, BorderRadius, Spacing, Shadows } from '../constants/theme';
+import type { AlertType } from '../types';
 
 interface AlertProps {
     type: AlertType;

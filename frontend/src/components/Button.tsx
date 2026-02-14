@@ -13,8 +13,8 @@ import {
     TextStyle,
     View,
 } from 'react-native';
-import { Colors, Typography, BorderRadius, Spacing, Shadows, TouchTarget } from '../../constants/theme';
-import type { ButtonVariant } from '../../types';
+import { Colors, Typography, BorderRadius, Spacing, Shadows, TouchTarget } from '../constants/theme';
+import type { ButtonVariant } from '../types';
 
 interface ButtonProps {
     title: string;

@@ -1,5 +1,5 @@
 /**
- * ChefMentor X â€“ Card Component
+ * ChefMentor X – Card Component
  * Used for recipes, diagnosis results, and content containers.
  */
 
@@ -13,12 +13,12 @@ import {
     ViewStyle,
     ImageSourcePropType,
 } from 'react-native';
-import { Colors, Typography, BorderRadius, Spacing, Shadows } from '../../constants/theme';
+import { Colors, Typography, BorderRadius, Spacing, Shadows } from '../constants/theme';
 
 interface CardProps {
     children: React.ReactNode;
     onPress?: () => void;
-    style?: ViewStyle;
+    style?: ViewStyle | ViewStyle[];
     variant?: 'default' | 'elevated' | 'outlined';
 }
 
@@ -49,7 +49,7 @@ export const Card: React.FC<CardProps> = ({
             <TouchableOpacity
                 onPress={onPress}
                 activeOpacity={0.9}
-                style={[...variantStyle, style]}
+                style={[variantStyle, style]}
                 accessibilityRole="button"
             >
                 {children}
@@ -57,7 +57,7 @@ export const Card: React.FC<CardProps> = ({
         );
     }
 
-    return <View style={[...variantStyle, style]}>{children}</View>;
+    return <View style={[variantStyle, style]}>{children}</View>;
 };
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({
@@ -69,7 +69,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
     style,
 }) => {
     return (
-        <Card onPress={onPress} variant="elevated" style={[styles.recipeCard, style]}>
+        <Card onPress={onPress} variant="elevated" style={style ? [styles.recipeCard, style] : styles.recipeCard}>
             <Image
                 source={{ uri: imageUrl }}
                 style={styles.recipeImage}
@@ -143,3 +143,4 @@ const styles = StyleSheet.create({
         color: Colors.neutral[500],
     },
 });
+

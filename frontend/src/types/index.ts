@@ -116,16 +116,15 @@ export type MainTabParamList = {
 
 export type CookStackParamList = {
     RecipeList: undefined;
-    RecipeDetails: { recipeId: string };
-    LiveCooking: { recipeId: string };
-    PauseOverlay: undefined;
-    Completion: { sessionId: string };
+    RecipeDetails: { recipeId?: string };
+    LiveCooking: { recipeId?: string };
+    Completion: { recipeId?: string };
 };
 
 export type AnalyzeStackParamList = {
     UploadAnalysis: undefined;
-    AnalysisLoading: { requestId: string };
-    DiagnosisResult: { resultId: string };
+    AnalysisLoading: undefined;
+    DiagnosisResult: undefined;
 };
 
 // ─── API ───────────────────────────────────────────

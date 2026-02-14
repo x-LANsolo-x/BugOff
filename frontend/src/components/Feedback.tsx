@@ -4,7 +4,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, Animated, TouchableOpacity } from 'react-native';
-import { Colors, Typography, BorderRadius, Spacing, Shadows } from '../../constants/theme';
+import { Colors, Typography, BorderRadius, Spacing, Shadows } from '../constants/theme';
 
 // ─── Loading Spinner ───────────────────────────────
 

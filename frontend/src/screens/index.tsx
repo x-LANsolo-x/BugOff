@@ -1,7 +1,7 @@
 /**
  * ChefMentor X – Screen Exports
  *
- * Real implementations for P1 + P2 screens, placeholders for the rest.
+ * Real implementations for P1 + P2 + P3 screens, placeholders for the rest.
  */
 
 import React from 'react';
@@ -20,6 +20,11 @@ export { default as RecipeDetailsScreen } from './RecipeDetailsScreen';
 export { default as LiveCookingScreen } from './LiveCookingScreen';
 export { default as CompletionScreen } from './CompletionScreen';
 
+// P3
+export { default as UploadAnalysisScreen } from './UploadAnalysisScreen';
+export { default as AnalysisLoadingScreen } from './AnalysisLoadingScreen';
+export { default as DiagnosisResultScreen } from './DiagnosisResultScreen';
+
 // ─── Placeholder factory ───────────────────────────
 
 const createPlaceholder = (name: string, emoji: string) => {
@@ -29,18 +34,13 @@ const createPlaceholder = (name: string, emoji: string) => {
             < Text style = { styles.title } > { name } </Text>
                 < Text style = { styles.subtitle } > Coming soon </Text>
                     </View>
-  );
+    );
 Screen.displayName = name.replace(/\s/g, '');
 return Screen;
 };
 
 // Auth flow
 export const OnboardingScreen = createPlaceholder('Onboarding', '👋');
-
-// Analyze tab
-export const UploadAnalysisScreen = createPlaceholder('Upload Analysis', '📸');
-export const AnalysisLoadingScreen = createPlaceholder('Analyzing...', '🔍');
-export const DiagnosisResultScreen = createPlaceholder('Diagnosis', '💡');
 
 const styles = StyleSheet.create({
     container: {

@@ -12,7 +12,7 @@ import {
     TextInputProps as RNTextInputProps,
     ViewStyle,
 } from 'react-native';
-import { Colors, Typography, BorderRadius, Spacing } from '../../constants/theme';
+import { Colors, Typography, BorderRadius, Spacing } from '../constants/theme';
 
 interface TextInputProps extends Omit<RNTextInputProps, 'style'> {
     label?: string;

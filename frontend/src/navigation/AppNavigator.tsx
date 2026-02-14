@@ -20,7 +20,7 @@
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, View, StyleSheet } from 'react-native';
 import { Colors, Typography, TouchTarget } from '../constants/theme';
@@ -46,9 +46,9 @@ import {
 
 // ─── Stack Navigators ──────────────────────────────
 
-const RootStack = createNativeStackNavigator<RootStackParamList>();
-const CookStack = createNativeStackNavigator<CookStackParamList>();
-const AnalyzeStack = createNativeStackNavigator<AnalyzeStackParamList>();
+const RootStack = createStackNavigator<RootStackParamList>();
+const CookStack = createStackNavigator<CookStackParamList>();
+const AnalyzeStack = createStackNavigator<AnalyzeStackParamList>();
 const MainTab = createBottomTabNavigator<MainTabParamList>();
 
 // ─── Cook Tab Stack ────────────────────────────────
@@ -58,8 +58,7 @@ function CookTabNavigator() {
         <CookStack.Navigator
             screenOptions={{
                 headerShown: false,
-                animation: 'fade',
-                contentStyle: { backgroundColor: Colors.neutral[50] },
+                cardStyle: { backgroundColor: Colors.neutral[50] },
             }}
         >
             <CookStack.Screen name="RecipeList" component={RecipeListScreen} />
@@ -77,8 +76,7 @@ function AnalyzeTabNavigator() {
         <AnalyzeStack.Navigator
             screenOptions={{
                 headerShown: false,
-                animation: 'fade',
-                contentStyle: { backgroundColor: Colors.neutral[50] },
+                cardStyle: { backgroundColor: Colors.neutral[50] },
             }}
         >
             <AnalyzeStack.Screen name="UploadAnalysis" component={UploadAnalysisScreen} />
@@ -139,8 +137,7 @@ export function AppNavigator() {
             <RootStack.Navigator
                 screenOptions={{
                     headerShown: false,
-                    animation: 'fade',
-                    contentStyle: { backgroundColor: Colors.neutral[50] },
+                    cardStyle: { backgroundColor: Colors.neutral[50] },
                 }}
             >
                 <RootStack.Screen name="Splash" component={SplashScreen} />

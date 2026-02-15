@@ -311,9 +311,12 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         padding: Spacing[6],
-        paddingBottom: 36,
+        paddingTop: Spacing[4],
+        paddingBottom: 40,
         backgroundColor: 'rgba(249,250,251,0.95)',
         gap: 10,
+        borderTopWidth: 1,
+        borderTopColor: Colors.neutral[100],
     },
     ctaPrimary: {
         flexDirection: 'row',

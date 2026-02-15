@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Platform } from 'react-native';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '../constants/theme';
 import { apiClient } from '../services/apiClient';
@@ -42,14 +43,39 @@ export default function LiveCameraScreen({ navigation }: any) {
   };
 
   const takePicture = async () => {
-    if (!cameraRef.current || isAnalyzing) return;
+    if (isAnalyzing) return;
 
     try {
       setIsAnalyzing(true);
-      const photo = await cameraRef.current.takePictureAsync({
-        quality: 0.8,
-        base64: false,
-      });
+      
+      let photo;
+      
+      // On web, use ImagePicker instead of CameraView
+      if (Platform.OS === 'web') {
+        const result = await ImagePicker.launchCameraAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: false,
+          quality: 0.8,
+        });
+        
+        if (result.canceled || !result.assets[0]) {
+          setIsAnalyzing(false);
+          return;
+        }
+        
+        photo = result.assets[0];
+      } else {
+        // On mobile, use CameraView
+        if (!cameraRef.current) {
+          setIsAnalyzing(false);
+          return;
+        }
+        
+        photo = await cameraRef.current.takePictureAsync({
+          quality: 0.8,
+          base64: false,
+        });
+      }
 
       // Send to backend for analysis
       const formData = new FormData();
@@ -76,13 +102,45 @@ export default function LiveCameraScreen({ navigation }: any) {
     }
   };
 
+  // On web, show a simpler UI with just a capture button
+  if (Platform.OS === 'web') {
+    return (
+      <SafeAreaView style={styles.container} edges={['top']}>
+        <View style={styles.webCameraContainer}>
+          <TouchableOpacity style={styles.closeBtn} onPress={() => navigation.goBack()}>
+            <Text style={styles.closeBtnText}>✕</Text>
+          </TouchableOpacity>
+          
+          <View style={styles.webCameraContent}>
+            <Text style={styles.webCameraTitle}>📸 Live Camera</Text>
+            <Text style={styles.webCameraSubtitle}>
+              Click the button below to capture a photo for analysis
+            </Text>
+            
+            <TouchableOpacity
+              style={[styles.webCaptureBtn, isAnalyzing && styles.captureBtnDisabled]}
+              onPress={takePicture}
+              disabled={isAnalyzing}
+            >
+              {isAnalyzing ? (
+                <Text style={styles.webCaptureBtnText}>🤖 Analyzing...</Text>
+              ) : (
+                <Text style={styles.webCaptureBtnText}>📸 Take Photo</Text>
+              )}
+            </TouchableOpacity>
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <CameraView
         ref={cameraRef}
         style={styles.camera}
         facing={facing}
-        flash={flash}
+        enableTorch={flash === 'on'}
       >
         {/* Top Controls */}
         <View style={styles.topControls}>

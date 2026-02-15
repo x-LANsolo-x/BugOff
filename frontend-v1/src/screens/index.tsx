@@ -30,4 +30,5 @@ export { default as ContextQuestionsScreen } from './ContextQuestionsScreen';
 // Profile / History / Settings
 export { default as ProfileScreen } from './ProfileScreen';
 export { default as CookingHistoryScreen } from './CookingHistoryScreen';
+export { default as LiveCameraScreen } from './LiveCameraScreen';
 export { default as SettingsScreen } from './SettingsScreen';

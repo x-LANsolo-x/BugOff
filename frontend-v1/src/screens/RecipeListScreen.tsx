@@ -213,11 +213,21 @@ export default function RecipeListScreen({ navigation }: any) {
                         <Text style={styles.headerTitle}>Choose a Recipe</Text>
                         <Text style={styles.headerSub}>What would you like to cook today?</Text>
                     </View>
-                    {isDemo && (
-                        <View style={styles.demoBadge}>
-                            <Text style={styles.demoBadgeText}>DEMO</Text>
-                        </View>
-                    )}
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                        {isDemo && (
+                            <View style={styles.demoBadge}>
+                                <Text style={styles.demoBadgeText}>DEMO</Text>
+                            </View>
+                        )}
+                        <TouchableOpacity
+                            style={styles.liveBtn}
+                            onPress={() => navigation.navigate('LiveCooking')}
+                            accessibilityRole="button"
+                        >
+                            <Text style={{ fontSize: 12 }}>🔴</Text>
+                            <Text style={styles.liveBtnText}>LIVE</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
                 {/* Search */}
@@ -339,6 +349,23 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontWeight: '700' as any,
         color: '#92400E',
+        letterSpacing: 0.5,
+    },
+    liveBtn: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+        backgroundColor: '#FEE2E2',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        borderRadius: BorderRadius.full,
+        borderWidth: 1,
+        borderColor: '#EF4444',
+    },
+    liveBtnText: {
+        fontSize: 10,
+        fontWeight: '700',
+        color: '#B91C1C',
         letterSpacing: 0.5,
     },
     searchWrap: {

@@ -36,6 +36,19 @@ class VoiceService {
     private recording: Audio.Recording | null = null;
     private isListening: boolean = false;
 
+    /**
+     * Request microphone permissions explicitly.
+     */
+    async requestPermissions(): Promise<boolean> {
+        try {
+            const { status } = await Audio.requestPermissionsAsync();
+            return status === 'granted';
+        } catch (e) {
+            console.error("Error requesting permissions:", e);
+            return false;
+        }
+    }
+
     // ── TTS (Text-to-Speech) ─────────────────────────
 
     /**
@@ -75,29 +88,49 @@ class VoiceService {
      * Start recording audio for STT.
      * Returns true if recording started successfully.
      */
-    async startListening(): Promise<boolean> {
+    async startListening(): Promise<{ success: boolean; error?: string }> {
         try {
+            console.log('🎤 [VoiceService] Requesting permissions...');
             const permission = await Audio.requestPermissionsAsync();
+            console.log('🎤 [VoiceService] Permission status:', permission.status);
+
             if (permission.status !== 'granted') {
-                console.warn('🎤 Microphone permission denied');
-                return false;
+                console.warn('🎤 [VoiceService] Microphone permission denied');
+                // Try one more time with getPermissionsAsync to be sure
+                const check = await Audio.getPermissionsAsync();
+                console.log('🎤 [VoiceService] Double check status:', check.status);
+                if (check.status !== 'granted') {
+                    return { success: false, error: 'Permission denied. Please enable mic access in settings.' };
+                }
             }
 
-            await Audio.setAudioModeAsync({
-                allowsRecordingIOS: true,
-                playsInSilentModeIOS: true,
-            });
+            console.log('🎤 [VoiceService] Permission granted, setting audio mode...');
+            try {
+                await Audio.setAudioModeAsync({
+                    allowsRecordingIOS: true,
+                    playsInSilentModeIOS: true,
+                    staysActiveInBackground: false,
+                    shouldDuckAndroid: true,
+                    playThroughEarpieceAndroid: false,
+                });
+            } catch (modeError) {
+                console.error('🎤 [VoiceService] Failed to set audio mode:', modeError);
+                return { success: false, error: 'Audio setup failed. Restart app.' };
+            }
 
+            console.log('🎤 [VoiceService] Starting recording...');
             const { recording } = await Audio.Recording.createAsync(
                 Audio.RecordingOptionsPresets.HIGH_QUALITY
             );
 
             this.recording = recording;
             this.isListening = true;
-            return true;
-        } catch (error) {
-            console.error('🎤 Failed to start recording:', error);
-            return false;
+            console.log('🎤 [VoiceService] Recording started successfully');
+            return { success: true };
+        } catch (error: any) {
+            console.error('🎤 [VoiceService] Failed to start recording (General Error):', error);
+            this.isListening = false;
+            return { success: false, error: error.message || 'Mic error. Try again.' };
         }
     }
 

@@ -122,6 +122,7 @@ export type CookStackParamList = {
     RecipeList: undefined;
     RecipeDetails: { recipeId?: string };
     LiveCooking: { recipeId?: string };
+    LiveCamera: { recipeId?: string };
     Completion: { recipeId?: string };
 };
 

@@ -79,7 +79,7 @@ function CookTabNavigator() {
             <CookStack.Screen name="RecipeList" component={RecipeListScreen} />
             <CookStack.Screen name="RecipeDetails" component={RecipeDetailsScreen} />
             <CookStack.Screen name="LiveCooking" component={LiveCookingScreen} />
-            {/* LiveCamera screen can be added when needed */}
+            <CookStack.Screen name="LiveCamera" component={LiveCameraScreen} />
             <CookStack.Screen name="Completion" component={CompletionScreen} />
         </CookStack.Navigator>
     );

@@ -119,6 +119,51 @@ Since you cannot see the image, use the context to make educated guesses.
             "ai_provider": "fallback"
         }
 
+    async def analyze_live_cooking(self, image_data, step_instruction: str, recipe_name: str = "", step_number: int = 1) -> dict:
+        """
+        Analyzes a live camera frame against the current cooking step.
+        Returns real-time feedback to guide the user.
+        Falls back: Gemini Vision → static.
+        """
+        prompt = f"""You are a real-time AI cooking mentor watching a user cook.
+
+Recipe: {recipe_name or 'Unknown'}
+Current Step {step_number}: "{step_instruction}"
+
+Look at this image from their kitchen camera. Analyze:
+1. Is the user on track with this step?
+2. Give a short, encouraging piece of feedback (1-2 sentences max).
+3. If you see something wrong, gently suggest a correction.
+
+Return ONLY valid JSON:
+{{
+    "feedback": "Your short feedback message here",
+    "is_on_track": true,
+    "suggestions": ["optional tip 1"]
+}}"""
+
+        # Tier 1: Gemini Vision
+        try:
+            loop = asyncio.get_event_loop()
+            ai_response = await loop.run_in_executor(
+                None,
+                partial(self.model.generate_content, [prompt, image_data])
+            )
+            result = self._parse_json(ai_response.text)
+            if result:
+                result["ai_provider"] = "gemini"
+                return result
+        except Exception as e:
+            print(f"⚠️ Gemini live analysis failed: {e}")
+
+        # Fallback: encouraging static response
+        return {
+            "feedback": "Looking good! Keep following the step instructions.",
+            "is_on_track": True,
+            "suggestions": [],
+            "ai_provider": "fallback"
+        }
+
     def _parse_json(self, text: str) -> dict:
         """Safely parse JSON from AI response, handling markdown blocks."""
         try:

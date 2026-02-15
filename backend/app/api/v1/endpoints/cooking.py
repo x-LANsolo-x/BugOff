@@ -42,3 +42,43 @@ async def chat_with_mentor(request: ChatRequest):
     service = AIMentorService()
     response = await service.chat_with_mentor(request.messages, request.context)
     return {"response": response}
+
+
+# ── Live Analysis Endpoint ──────────────────────────
+
+from fastapi import UploadFile, File, Form
+from app.services.ai_vision import AIVisionService
+from PIL import Image
+from io import BytesIO
+
+@router.post("/live-analysis")
+async def live_analysis(
+    image: UploadFile = File(...),
+    step_instruction: str = Form(""),
+    recipe_name: str = Form(""),
+    step_number: int = Form(1),
+):
+    """
+    Accepts a camera frame and the current step context.
+    Returns AI feedback on cooking progress.
+    """
+    try:
+        contents = await image.read()
+        image_data = Image.open(BytesIO(contents))
+
+        vision_service = AIVisionService()
+        result = await vision_service.analyze_live_cooking(
+            image_data=image_data,
+            step_instruction=step_instruction,
+            recipe_name=recipe_name,
+            step_number=step_number,
+        )
+        return result
+    except Exception as e:
+        print(f"Live analysis error: {e}")
+        return {
+            "feedback": "Keep going! You're doing great.",
+            "is_on_track": True,
+            "suggestions": [],
+            "ai_provider": "error_fallback"
+        }

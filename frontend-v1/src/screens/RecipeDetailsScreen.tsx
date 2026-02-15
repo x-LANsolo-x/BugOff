@@ -21,6 +21,7 @@ import {
     TouchableOpacity,
     Animated,
     Dimensions,
+    Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '../constants/theme';
@@ -224,15 +225,16 @@ export default function RecipeDetailsScreen({ navigation }: any) {
                     onPress={handleStartCooking}
                     activeOpacity={0.9}
                     accessibilityRole="button"
-                    accessibilityLabel="Start cooking with voice guidance"
+                    accessibilityLabel="Start live cooking with camera and voice"
                 >
                     <View style={styles.ctaLeft}>
                         <View style={styles.ctaMicCircle}>
-                            <Text style={{ fontSize: 22 }}>🎙️</Text>
+                            {/* Camera + Mic icon combo to indicate live mode */}
+                            <Text style={{ fontSize: 22 }}>📹</Text>
                         </View>
                         <View>
-                            <Text style={styles.ctaTitle}>START COOKING</Text>
-                            <Text style={styles.ctaSub}>Voice Guidance Enabled</Text>
+                            <Text style={styles.ctaTitle}>START LIVE COOKING</Text>
+                            <Text style={styles.ctaSub}>Camera & Voice Assistance</Text>
                         </View>
                     </View>
                     <View style={styles.ctaArrow}>
@@ -249,12 +251,13 @@ const styles = StyleSheet.create({
 
     // ─── Hero ─────────────────────────
     hero: {
-        height: 320,
+        height: SCREEN_W * 0.8, // Aspect ratio based on width instead of fixed height
+        maxHeight: 350,
         position: 'relative',
         alignItems: 'center',
         justifyContent: 'center',
-        borderBottomLeftRadius: 36,
-        borderBottomRightRadius: 36,
+        borderBottomLeftRadius: 32,
+        borderBottomRightRadius: 32,
         overflow: 'hidden',
     },
     heroGradientTop: {
@@ -443,12 +446,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        padding: Spacing[6],
+        paddingHorizontal: Spacing[5],
         paddingTop: Spacing[4],
-        paddingBottom: 40,
-        backgroundColor: 'rgba(249,250,251,0.95)',
+        paddingBottom: Platform.OS === 'ios' ? 34 : 24, // Better safe area handling
+        backgroundColor: 'rgba(255,255,255,0.95)',
         borderTopWidth: 1,
-        borderTopColor: Colors.neutral[100],
+        borderTopColor: Colors.neutral[200],
     },
     ctaBtn: {
         flexDirection: 'row',

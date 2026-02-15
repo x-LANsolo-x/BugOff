@@ -34,7 +34,9 @@ const SettingsScreen = ({ navigation }: any) => {
     // Sync voice speed with voice service
     useEffect(() => {
         const speedMap = { Slow: 0.8, Normal: 1.0, Fast: 1.3 };
-        voiceService.updateSettings({ ttsSpeed: speedMap[settings.voiceSpeed] });
+        // voiceSpeed is now 'Slow' | 'Normal' | 'Fast', so we can index directly
+        const speed = speedMap[settings.voiceSpeed] || 1.0;
+        voiceService.updateSettings({ ttsSpeed: speed });
     }, [settings.voiceSpeed]);
 
     const handleEditProfile = () => {

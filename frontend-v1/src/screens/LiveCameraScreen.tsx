@@ -47,9 +47,9 @@ export default function LiveCameraScreen({ navigation }: any) {
 
     try {
       setIsAnalyzing(true);
-      
+
       let photo;
-      
+
       // On web, use ImagePicker instead of CameraView
       if (Platform.OS === 'web') {
         const result = await ImagePicker.launchCameraAsync({
@@ -57,12 +57,12 @@ export default function LiveCameraScreen({ navigation }: any) {
           allowsEditing: false,
           quality: 0.8,
         });
-        
+
         if (result.canceled || !result.assets[0]) {
           setIsAnalyzing(false);
           return;
         }
-        
+
         photo = result.assets[0];
       } else {
         // On mobile, use CameraView
@@ -70,7 +70,7 @@ export default function LiveCameraScreen({ navigation }: any) {
           setIsAnalyzing(false);
           return;
         }
-        
+
         photo = await cameraRef.current.takePictureAsync({
           quality: 0.8,
           base64: false,
@@ -110,13 +110,13 @@ export default function LiveCameraScreen({ navigation }: any) {
           <TouchableOpacity style={styles.closeBtn} onPress={() => navigation.goBack()}>
             <Text style={styles.closeBtnText}>✕</Text>
           </TouchableOpacity>
-          
+
           <View style={styles.webCameraContent}>
             <Text style={styles.webCameraTitle}>📸 Live Camera</Text>
             <Text style={styles.webCameraSubtitle}>
               Click the button below to capture a photo for analysis
             </Text>
-            
+
             <TouchableOpacity
               style={[styles.webCaptureBtn, isAnalyzing && styles.captureBtnDisabled]}
               onPress={takePicture}
@@ -168,6 +168,16 @@ export default function LiveCameraScreen({ navigation }: any) {
           </TouchableOpacity>
 
           <View style={styles.placeholder} />
+        </View>
+
+        {/* Start Cooking Button Overlay */}
+        <View style={styles.startCookingContainer}>
+          <TouchableOpacity
+            style={styles.startCookingBtn}
+            onPress={() => navigation.navigate('LiveCooking', { recipeId: '1' })} // Passing dummy ID for now
+          >
+            <Text style={styles.startCookingText}>👨‍🍳 Start Cooking</Text>
+          </TouchableOpacity>
         </View>
 
         {isAnalyzing && (
@@ -291,7 +301,24 @@ const styles = StyleSheet.create({
     fontSize: Typography.fontSize.lg,
     fontWeight: Typography.fontWeight.bold,
   },
-  
+  startCookingContainer: {
+    position: 'absolute',
+    bottom: 110, // Above bottom controls
+    alignSelf: 'center',
+  },
+  startCookingBtn: {
+    backgroundColor: Colors.brand.sage,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: BorderRadius.full,
+    ...Shadows.lg,
+  },
+  startCookingText: {
+    color: Colors.white,
+    fontSize: Typography.fontSize.base,
+    fontWeight: 'bold',
+  },
+
   /* Web Camera Styles */
   webCameraContainer: {
     flex: 1,

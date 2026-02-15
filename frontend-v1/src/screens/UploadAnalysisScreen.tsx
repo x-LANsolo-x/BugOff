@@ -18,7 +18,9 @@ import {
     ScrollView,
     TouchableOpacity,
     Animated,
+    Alert,
 } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '../constants/theme';
 import { useAnalysisStore } from '../stores';
@@ -36,16 +38,54 @@ export default function UploadAnalysisScreen({ navigation }: any) {
         Animated.timing(fadeIn, { toValue: 1, duration: 500, useNativeDriver: true }).start();
     }, []);
 
-    const handleTakePhoto = () => {
-        // Placeholder: in production use expo-camera
-        useAnalysisStore.getState().setImage('demo-photo-uri');
-        navigation.navigate('ContextQuestions');
+    const handleTakePhoto = async () => {
+        try {
+            const { status } = await ImagePicker.requestCameraPermissionsAsync();
+            if (status !== 'granted') {
+                alert('Sorry, we need camera permissions to make this work!');
+                return;
+            }
+
+            const result = await ImagePicker.launchCameraAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            });
+
+            if (!result.canceled) {
+                useAnalysisStore.getState().setImage(result.assets[0].uri);
+                navigation.navigate('ContextQuestions');
+            }
+        } catch (error) {
+            console.error('Error taking photo:', error);
+            alert('Failed to open camera');
+        }
     };
 
-    const handleChooseGallery = () => {
-        // Placeholder: in production use expo-image-picker
-        useAnalysisStore.getState().setImage('demo-gallery-uri');
-        navigation.navigate('ContextQuestions');
+    const handleChooseGallery = async () => {
+        try {
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+            if (status !== 'granted') {
+                alert('Sorry, we need camera roll permissions to make this work!');
+                return;
+            }
+
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                allowsEditing: true,
+                aspect: [4, 3],
+                quality: 1,
+            });
+
+            if (!result.canceled) {
+                useAnalysisStore.getState().setImage(result.assets[0].uri);
+                navigation.navigate('ContextQuestions');
+            }
+        } catch (error) {
+            console.error('Error picking image:', error);
+            alert('Failed to pick image');
+        }
     };
 
     return (

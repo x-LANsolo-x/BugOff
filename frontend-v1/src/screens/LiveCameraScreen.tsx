@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     width: 68,
     height: 68,
     borderRadius: BorderRadius.full,
-    backgroundColor: Colors.brand.blue,
+    backgroundColor: Colors.brand.orange,
   },
   placeholder: {
     width: 56,

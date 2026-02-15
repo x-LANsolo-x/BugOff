@@ -213,7 +213,7 @@ apiClient.interceptors.response.use(
     // Return standardized error
     return Promise.reject({
       status,
-      message: error.response.data?.message || error.message,
+      message: error.response.data?.message || (error as any).message || 'Unknown error',
       data: error.response.data,
       originalError: error,
     });

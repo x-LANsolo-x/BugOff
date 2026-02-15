@@ -328,19 +328,21 @@ const styles = StyleSheet.create({
     },
     ringCenter: {
         flexDirection: 'row',
-        alignItems: 'flex-end',
+        alignItems: 'baseline',
+        justifyContent: 'center',
     },
     ringPercent: {
-        fontSize: 42,
+        fontSize: 48,
         fontWeight: Typography.fontWeight.extrabold,
         color: '#8EA68B',
+        lineHeight: 56,
     },
     ringLabel: {
-        fontSize: Typography.fontSize.lg,
-        fontWeight: Typography.fontWeight.medium,
-        color: Colors.neutral[500],
-        marginBottom: 6,
-        marginLeft: 2,
+        fontSize: Typography.fontSize.xl,
+        fontWeight: Typography.fontWeight.semibold,
+        color: Colors.neutral[400],
+        marginBottom: 4,
+        marginLeft: 4,
     },
     spinDot: {
         position: 'absolute',

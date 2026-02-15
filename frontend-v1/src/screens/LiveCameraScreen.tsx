@@ -291,4 +291,44 @@ const styles = StyleSheet.create({
     fontSize: Typography.fontSize.lg,
     fontWeight: Typography.fontWeight.bold,
   },
+  
+  /* Web Camera Styles */
+  webCameraContainer: {
+    flex: 1,
+    backgroundColor: Colors.neutral[900],
+    padding: Spacing[6],
+  },
+  webCameraContent: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: Spacing[6],
+  },
+  webCameraTitle: {
+    fontSize: Typography.fontSize['3xl'],
+    fontWeight: Typography.fontWeight.bold,
+    color: Colors.white,
+    marginBottom: Spacing[2],
+  },
+  webCameraSubtitle: {
+    fontSize: Typography.fontSize.base,
+    color: Colors.neutral[400],
+    textAlign: 'center',
+    marginBottom: Spacing[8],
+    maxWidth: 400,
+  },
+  webCaptureBtn: {
+    backgroundColor: Colors.brand.orange,
+    paddingVertical: Spacing[5],
+    paddingHorizontal: Spacing[8],
+    borderRadius: BorderRadius.xl,
+    minWidth: 200,
+    ...Shadows.lg,
+  },
+  webCaptureBtnText: {
+    color: Colors.white,
+    fontSize: Typography.fontSize.lg,
+    fontWeight: Typography.fontWeight.bold,
+    textAlign: 'center',
+  },
 });

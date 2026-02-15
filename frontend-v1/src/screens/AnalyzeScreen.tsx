@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     padding: Spacing[6],
-    paddingBottom: Spacing[10],
+    paddingBottom: 100, // Extra bottom padding to prevent tab bar overlap
   },
   header: {
     marginBottom: Spacing[6],
@@ -284,12 +284,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   continueBtn: {
+    marginTop: Spacing[2],
     marginBottom: Spacing[6],
   },
   tipsCard: {
     backgroundColor: Colors.white,
     borderRadius: BorderRadius.xl,
     padding: Spacing[5],
+    marginBottom: Spacing[4],
     borderWidth: 1,
     borderColor: Colors.neutral[200],
     ...Shadows.sm,

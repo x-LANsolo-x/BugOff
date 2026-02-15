@@ -23,6 +23,7 @@ import * as WebBrowser from 'expo-web-browser';
 import { Colors, Typography, Spacing, BorderRadius, Shadows } from '../constants/theme';
 import { useAuthStore } from '../stores/authStore';
 import { apiClient } from '../services/apiClient';
+import { ENV } from '../config/env';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -32,9 +33,9 @@ export default function LoginScreen({ navigation }: any) {
     const { setUser, setDemo } = useAuthStore();
 
     const [request, response, promptAsync] = Google.useAuthRequest({
-        clientId: 'YOUR_WEB_CLIENT_ID',
-        iosClientId: 'YOUR_IOS_CLIENT_ID',
-        androidClientId: 'YOUR_ANDROID_CLIENT_ID',
+        clientId: ENV.GOOGLE_CLIENT_ID,
+        iosClientId: 'YOUR_IOS_CLIENT_ID', // Optional: Add to env if needed
+        androidClientId: 'YOUR_ANDROID_CLIENT_ID', // Optional: Add to env if needed
     });
 
     useEffect(() => {

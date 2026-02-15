@@ -41,7 +41,7 @@ function getApiBaseUrl(): string {
 
     // Development: Check for manual override first
     const customBackendUrl = Constants.expoConfig?.extra?.backendUrl;
-    
+
     if (customBackendUrl) {
         console.log('📡 Using custom backend URL:', customBackendUrl);
         return `${customBackendUrl}/api/v1`;
@@ -49,18 +49,18 @@ function getApiBaseUrl(): string {
 
     // Auto-detect based on platform
     const { manifest } = Constants;
-    
+
     if (Platform.OS === 'android') {
         // Android: Check if on physical device or emulator
         const debuggerHost = manifest?.debuggerHost || manifest?.hostUri;
-        
+
         if (debuggerHost) {
             // Physical device: Extract IP from debuggerHost (format: "192.168.1.x:19000")
             const hostIP = debuggerHost.split(':')[0];
             console.log('📱 Android physical device detected, using host IP:', hostIP);
             return `http://${hostIP}:8000/api/v1`;
         }
-        
+
         // Android Emulator: Use special alias for host machine
         console.log('📱 Android Emulator detected, using 10.0.2.2');
         return 'http://10.0.2.2:8000/api/v1';
@@ -69,14 +69,14 @@ function getApiBaseUrl(): string {
     if (Platform.OS === 'ios') {
         // iOS: Check if on physical device or simulator
         const debuggerHost = manifest?.debuggerHost || manifest?.hostUri;
-        
+
         if (debuggerHost && !debuggerHost.includes('localhost')) {
             // Physical device: Use LAN IP
             const hostIP = debuggerHost.split(':')[0];
             console.log('📱 iOS physical device detected, using host IP:', hostIP);
             return `http://${hostIP}:8000/api/v1`;
         }
-        
+
         // iOS Simulator: Use localhost
         console.log('📱 iOS Simulator detected, using localhost');
         return 'http://localhost:8000/api/v1';
@@ -106,21 +106,24 @@ console.log('='.repeat(50) + '\n');
 export const ENV = {
     // API Configuration
     API_URL,
-    
+
     // Timeouts (in milliseconds)
     API_TIMEOUT: 15000,          // 15s for general requests
     AI_TIMEOUT: 30000,           // 30s for AI requests (can be slower)
     UPLOAD_TIMEOUT: 60000,       // 60s for image uploads
-    
+
     // Environment
     IS_DEV: __DEV__,
     IS_PROD: !__DEV__,
-    
+
     // Platform
     PLATFORM: Platform.OS,
     IS_IOS: Platform.OS === 'ios',
     IS_ANDROID: Platform.OS === 'android',
     IS_WEB: Platform.OS === 'web',
+
+    // Auth
+    GOOGLE_CLIENT_ID: Constants.expoConfig?.extra?.googleClientId || '',
 } as const;
 
 // Type-safe environment access
